@@ -31,21 +31,21 @@
         }
         input, button, select {
             width: 100%;
-            padding: 12px;  /* Aumentato il padding per dare più spazio */
+            padding: 12px;
             margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;  /* Garantisce che il padding non allarghi l'elemento */
+            box-sizing: border-box;
         }
         button {
             background-color: #25D366;
             color: white;
             border: none;
             cursor: pointer;
-            padding: 14px; /* Maggiore padding per i tasti */
+            padding: 14px;
         }
         .call-now {
-            background-color: #007bff; /* Blu del tasto "Chiama Adesso" */
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 14px;
@@ -54,7 +54,7 @@
             border-radius: 5px;
             width: 100%;
         }
-        .whatsapp-icon, .instagram-icon, .facebook-icon, .call-icon {
+        .whatsapp-icon, .instagram-icon, .facebook-icon {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -68,15 +68,12 @@
             background-color: #25D366;
         }
         .instagram-icon {
-            background-color: #C13584; /* Colore Instagram */
+            background-color: #C13584;
         }
         .facebook-icon {
-            background-color: #1877F2; /* Colore Facebook */
+            background-color: #1877F2;
         }
-        .call-icon {
-            background-color: #34b7f1; /* Colore del tasto per la chiamata */
-        }
-        .whatsapp-icon img, .instagram-icon img, .facebook-icon img, .call-icon img {
+        .whatsapp-icon img, .instagram-icon img, .facebook-icon img {
             width: 40px;
             height: 40px;
         }
@@ -101,7 +98,6 @@
             color: white;
             font-size: 16px;
         }
-        /* Posizione fissa dei tasti social */
         .social-icons {
             position: fixed;
             bottom: 20px;
@@ -114,7 +110,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://instagram.com/username/profile-pic.jpg" alt="Logo Gommista" class="logo">
+        <img src="https://www.catanzarogomme.it/wp-content/uploads/2023/05/ACVK1513.png" alt="Logo Gommista" class="logo">
         <h2>Richiedi un Preventivo</h2>
         <form id="preventivoForm">
             <input type="text" id="nome" placeholder="Il tuo nome" required>
@@ -129,10 +125,8 @@
             </select>
             <button type="button" onclick="inviaWhatsApp()">Richiedi su WhatsApp</button>
             
-            <!-- Testo "oppure" -->
             <div class="or-text">oppure</div>
 
-            <!-- Tasto per chiamare -->
             <button class="call-now" onclick="window.location.href='tel:+393401952411'">Chiama Adesso</button>
         </form>
         <div class="location">
@@ -141,19 +135,13 @@
         </div>
     </div>
     
-    <!-- Icone social fisse in basso a destra -->
     <div class="social-icons">
-        <!-- Icona WhatsApp -->
         <a href="https://wa.me/393491076332" class="whatsapp-icon" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
         </a>
-        
-        <!-- Icona Instagram -->
         <a href="https://www.instagram.com/catanzarogomme2023/" class="instagram-icon" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
-        
-        <!-- Icona Facebook -->
         <a href="https://www.facebook.com/share/18b47BLgUg/" class="facebook-icon" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
         </a>
