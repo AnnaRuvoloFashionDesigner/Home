@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: red; /* Sfondo rosso */
+            background-color: red;
             color: white;
             margin: 0;
             height: 100vh;
@@ -78,8 +78,8 @@
             height: 40px;
         }
         .logo {
-            max-width: 200px;
-            margin-bottom: 20px;
+            max-width: 350px; /* Ingrandito il logo */
+            margin-bottom: 2px; /* Ulteriore riduzione dello spazio tra il logo e il titolo */
         }
         .location {
             margin-top: 20px;
@@ -134,39 +134,5 @@
             <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Enrico+Fermi,+98040+Torregrotta+ME" target="_blank">Ottieni Indicazioni</a>
         </div>
     </div>
-    
-    <div class="social-icons">
-        <a href="https://wa.me/393491076332" class="whatsapp-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
-        <a href="https://www.instagram.com/catanzarogomme2023/" class="instagram-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
-        <a href="https://www.facebook.com/share/18b47BLgUg/" class="facebook-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-        </a>
-    </div>
-
-    <script>
-        function inviaWhatsApp() {
-            let nome = document.getElementById("nome").value;
-            let telefono = document.getElementById("telefono").value;
-            let modello = document.getElementById("modello").value;
-            let misura = document.getElementById("misura").value;
-            let servizio = document.getElementById("servizio").value;
-            
-            if (!nome || !telefono || !modello || !misura || !servizio) {
-                alert("Compila tutti i campi");
-                return;
-            }
-            
-            let messaggio = `Ciao, sono ${nome}. Vorrei un preventivo per il servizio: ${servizio}.
-Modello auto: ${modello}
-Misura gomme: ${misura}
-Il mio numero è ${telefono}.`;
-            let link = `https://wa.me/393491076332?text=${encodeURIComponent(messaggio)}`;
-            window.open(link, "_blank");
-        }
-    </script>
 </body>
 </html>
