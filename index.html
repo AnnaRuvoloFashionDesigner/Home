@@ -19,8 +19,9 @@
             flex-direction: column;
             background-image: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG');
             background-repeat: no-repeat;
+            background-size: cover; /* L'immagine copre tutto lo schermo */
             background-position: center;
-            background-size: contain; /* L'immagine sarà più piccola e centrata */
+            background-attachment: fixed; /* Sfondo fisso su tutti i dispositivi */
         }
         .container {
             max-width: 400px;
@@ -102,6 +103,7 @@
             color: white;
             font-size: 16px;
         }
+        /* Icone social fisse in basso a destra */
         .social-icons {
             position: fixed;
             bottom: 20px;
@@ -137,6 +139,24 @@
             <h3>Dove Siamo</h3>
             <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Enrico+Fermi,+98040+Torregrotta+ME" target="_blank">Ottieni Indicazioni</a>
         </div>
+    </div>
+
+    <!-- Icone social fisse in basso a destra -->
+    <div class="social-icons">
+        <!-- Icona WhatsApp -->
+        <a href="https://wa.me/393491076332" class="whatsapp-icon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        
+        <!-- Icona Instagram -->
+        <a href="https://www.instagram.com/catanzarogomme2023/" class="instagram-icon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        
+        <!-- Icona Facebook -->
+        <a href="https://www.facebook.com/share/18b47BLgUg/" class="facebook-icon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
     </div>
 </body>
 </html>
