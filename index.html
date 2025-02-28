@@ -51,33 +51,91 @@
         }
     </style>
     <script>
-        function showForm() {
-            const selectedService = document.getElementById('service').value;
-            document.querySelectorAll('.service-form').forEach(form => form.classList.add('hidden'));
-            document.getElementById(selectedService + '-form').classList.remove('hidden');
+        function showEventForm() {
+            const eventType = document.getElementById('event-type').value;
+            const serviceSelection = document.getElementById('service-selection');
+            const matrimonioRoleForm = document.getElementById('matrimonio-role-form');
+            const serviceForm = document.getElementById('service-form');
+
+            // Nascondi il selettore del servizio finché non viene selezionato un evento
+            serviceSelection.classList.add('hidden');
+            matrimonioRoleForm.classList.add('hidden');
+            
+            if (eventType === 'matrimonio') {
+                // Se è Matrimonio, mostra la selezione del ruolo
+                matrimonioRoleForm.classList.remove('hidden');
+            } else {
+                // Altrimenti, mostra la selezione del servizio
+                serviceSelection.classList.remove('hidden');
+            }
         }
+
+        function showRoleAndService() {
+            const role = document.getElementById('matrimonio-role').value;
+            const serviceSelection = document.getElementById('service-selection');
+            const serviceForm = document.getElementById('service-form');
+
+            // Una volta scelto il ruolo del matrimonio, mostra il selettore del servizio
+            if (role !== "seleziona-ruolo") {
+                serviceSelection.classList.remove('hidden');
+            }
+        }
+
+        function showServiceForm() {
+            const selectedService = document.getElementById('service').value;
+            const abitoSuMisuraForm = document.getElementById('abito-su-misura-form');
+            const abitoTagliaForm = document.getElementById('abito-in-taglia-form');
+            const riparazioniForm = document.getElementById('riparazione-form');
+            
+            // Nascondi tutti i form di servizio
+            abitoSuMisuraForm.classList.add('hidden');
+            abitoTagliaForm.classList.add('hidden');
+            riparazioniForm.classList.add('hidden');
+
+            // Mostra il form del servizio selezionato
+            if (selectedService === 'abito-su-misura') {
+                abitoSuMisuraForm.classList.remove('hidden');
+            } else if (selectedService === 'abito-in-taglia') {
+                abitoTagliaForm.classList.remove('hidden');
+            } else if (selectedService === 'riparazione') {
+                riparazioniForm.classList.remove('hidden');
+            }
+        }
+
         function sendWhatsApp() {
             let name = document.getElementById('name').value;
             let surname = document.getElementById('surname').value;
             let phone = document.getElementById('phone').value;
+            let age = document.getElementById('age').value;
+            let country = document.getElementById('country').value;
+            let eventDate = document.getElementById('event-date').value;
+            let eventType = document.getElementById('event-type').value;
+            let role = document.getElementById('matrimonio-role') ? document.getElementById('matrimonio-role').value : '';
             let service = document.getElementById('service').value;
             let message = `Salve, mi chiamo ${name} ${surname}.\n`;
+            message += `Età: ${age}\n`;
+            message += `Resido a: ${country}\n`;
+            message += `Data dell'evento: ${eventDate}\n`;
+            message += `Tipo di evento: ${eventType}\n`;
+
+            if (eventType === 'matrimonio') {
+                message += `Ruolo Matrimonio: ${role}\n`;
+            }
+
             message += `Questo è il mio numero di telefono per chiarimenti: ${phone}.\n`;
             message += `Vorrei un preventivo per il servizio: ${service}.\n`;
-            
+
             if (service === 'riparazione') {
                 let type = document.getElementById('repair-type').value;
                 let details = document.getElementById('repair-details').value;
                 message += `Tipo di riparazione: ${type}.\nDettagli: ${details}\n`;
-            } else if (service === 'abito-su-misura') {
-                let spalle = document.getElementById('spalle').value;
-                let torace = document.getElementById('torace').value;
-                let vita = document.getElementById('vita').value;
-                let fianchi = document.getElementById('fianchi').value;
-                let lunghezza = document.getElementById('lunghezza').value;
-                message += `Misure:\nSpalle: ${spalle} cm\nTorace: ${torace} cm\nVita: ${vita} cm\nFianchi: ${fianchi} cm\nLunghezza: ${lunghezza} cm\n`;
+            } else if (service === 'abito-su-misura' || service === 'abito-in-taglia') {
+                let height = document.getElementById('height').value;
+                let size = document.getElementById('size').value;
+                let description = document.getElementById('description').value;
+                message += `Altezza cliente: ${height} cm\nTaglia: ${size}\nDescrizione: ${description}\n`;
             }
-            
+
             let whatsappUrl = `https://wa.me/393408936244?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
@@ -85,8 +143,8 @@
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="Anna Ruvolo Fashion Design" class="logo" onclick="window.location.href='index.html'">
-        <h1>Anna Ruvolo Fashion Design</h1>
+        <img src="logo.png" alt="Anna Ruvolo Fashion Designer" class="logo" onclick="window.location.href='index.html'">
+        <h1>Anna Ruvolo Fashion Designer</h1>
         <p>Creazioni sartoriali su misura per ogni occasione</p>
         
         <div class="contact-form">
@@ -94,35 +152,81 @@
             <input type="text" id="name" placeholder="Nome" required>
             <input type="text" id="surname" placeholder="Cognome" required>
             <input type="tel" id="phone" placeholder="Numero di telefono" required>
+            <input type="number" id="age" placeholder="Età" required>
+            <input type="text" id="country" placeholder="Paese di residenza / Città" required>
+            <input type="date" id="event-date" placeholder="Data evento" required>
+            <select id="event-type" onchange="showEventForm()" required>
+                <option value="" disabled selected>Tipologia evento</option>
+                <option value="matrimonio">Matrimonio</option>
+                <option value="laurea">Laurea</option>
+                <option value="formale">Formale</option>
+                <option value="18esimo">18esimo</option>
+                <option value="da-tutti-i-giorni">Da tutti i giorni</option>
+                <option value="festa-serale">Festa serale</option>
+            </select>
         </div>
 
-        <div class="contact-form">
-            <h2>Seleziona il Servizio</h2>
-            <select id="service" onchange="showForm()">
-                <option value="" disabled selected>Seleziona un servizio</option>
-                <option value="riparazione">Riparazione sartoriale</option>
-                <option value="abito-su-misura">Abito su misura</option>
+        <!-- Ruolo Matrimonio (visibile solo se Matrimonio è selezionato) -->
+        <div id="matrimonio-role-form" class="contact-form hidden">
+            <h2>Ruolo al Matrimonio</h2>
+            <select id="matrimonio-role" onchange="showRoleAndService()" required>
+                <option value="seleziona-ruolo" disabled selected>Seleziona ruolo</option>
+                <option value="invitata">Invitata</option>
+                <option value="testimone">Testimone</option>
+                <option value="sposa">Sposa</option>
+                <option value="damina">Damigella</option>
             </select>
         </div>
-        
-        <div id="riparazione-form" class="contact-form service-form hidden">
-            <h2>Dettagli Riparazione</h2>
-            <select id="repair-type">
-                <option value="buca">Riparazione buco nei pantaloni</option>
-                <option value="accorciare">Accorciare un abito</option>
-                <option value="modifica">Altre modifiche</option>
+
+        <!-- Seleziona il Servizio -->
+        <div id="service-selection" class="contact-form hidden">
+            <h2>Seleziona il Servizio</h2>
+            <select id="service" onchange="showServiceForm()" required>
+                <option value="" disabled selected>Seleziona un servizio</option>
+                <option value="abito-su-misura">Abito su misura</option>
+                <option value="abito-in-taglia">Abito in taglia</option>
+                <option value="riparazione">Riparazioni sartoriali</option>
             </select>
-            <textarea id="repair-details" placeholder="Descrivi la riparazione richiesta" rows="4"></textarea>
+        </div>
+
+        <div id="abito-su-misura-form" class="contact-form service-form hidden">
+            <h2>Abito su misura</h2>
+            <input type="number" id="height" placeholder="Altezza cliente (cm)" required>
+            <select id="size" required>
+                <option value="" disabled selected>Seleziona la taglia</option>
+                <option value="38">Taglia 38</option>
+                <option value="40">Taglia 40</option>
+                <option value="42">Taglia 42</option>
+                <option value="44">Taglia 44</option>
+                <option value="46">Taglia 46</option>
+                <option value="48">Taglia 48</option>
+                <option value="50">Taglia 50</option>
+            </select>
+            <textarea id="description" placeholder="Descrizione (libera)" rows="4"></textarea>
             <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
         </div>
-        
-        <div id="abito-su-misura-form" class="contact-form service-form hidden">
-            <h2>Inserisci le tue Misure</h2>
-            <input type="number" id="spalle" placeholder="Spalle (cm)" required>
-            <input type="number" id="torace" placeholder="Torace (cm)" required>
-            <input type="number" id="vita" placeholder="Vita (cm)" required>
-            <input type="number" id="fianchi" placeholder="Fianchi (cm)" required>
-            <input type="number" id="lunghezza" placeholder="Lunghezza totale (cm)" required>
+
+        <div id="abito-in-taglia-form" class="contact-form service-form hidden">
+            <h2>Abito in taglia</h2>
+            <input type="number" id="height" placeholder="Altezza cliente (cm)" required>
+            <select id="size" required>
+                <option value="" disabled selected>Seleziona la taglia</option>
+                <option value="38">Taglia 38</option>
+                <option value="40">Taglia 40</option>
+                <option value="42">Taglia 42</option>
+                <option value="44">Taglia 44</option>
+                <option value="46">Taglia 46</option>
+                <option value="48">Taglia 48</option>
+                <option value="50">Taglia 50</option>
+            </select>
+            <textarea id="description" placeholder="Descrizione (libera)" rows="4"></textarea>
+            <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
+        </div>
+
+        <div id="riparazione-form" class="contact-form service-form hidden">
+            <h2>Riparazioni Sartoriali</h2>
+            <input type="text" id="repair-type" placeholder="Tipo di riparazione" required>
+            <textarea id="repair-details" placeholder="Descrizione dettagliata della riparazione" rows="4" required></textarea>
             <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
         </div>
     </div>
