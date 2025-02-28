@@ -13,18 +13,15 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: red;
+            background: red url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
+            background-size: cover; /* Lo sfondo prende tutto lo schermo */
             color: white;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-image: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG');
-            background-repeat: no-repeat;
-            background-size: contain; /* Adatta l'immagine senza tagliarla */
-            background-position: center;
             overflow: hidden; /* Evita lo scrolling */
-            min-height: 100vh;
         }
         .container {
             max-width: 350px;
