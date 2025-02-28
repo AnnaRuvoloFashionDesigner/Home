@@ -2,207 +2,121 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-    <title>Catanzaro Gomme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Ruvolo Fashion Designer</title>
     <style>
-        /* Impostazioni generali per il corpo */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            color: black;
             margin: 0;
-            color: white;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            background-color: #ff0000; /* Sfondo rosso di base per desktop */
+            padding: 0;
+            text-align: center;
         }
-
-        /* Sfondo su mobile */
-        @media (max-width: 767px) {
-            body {
-                background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
-                background-size: cover;
-                background-attachment: fixed;
-            }
-        }
-
-        /* Sfondo su desktop */
-        @media (min-width: 768px) {
-            body {
-                background: #ff0000; /* Sfondo rosso */
-                background-size: cover;
-                background-position: center center;
-                background-attachment: fixed;
-            }
-
-            .container {
-                background: rgba(0, 0, 0, 0.7); /* Colore di sfondo del contenuto */
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                flex-grow: 1;
-                justify-content: center;
-                max-width: 100%;
-            }
-        }
-
-        /* Container del modulo di preventivo */
         .container {
-            max-width: 100%;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin: 20px auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-            justify-content: center;
         }
-
-        /* Form e bottoni */
-        input, button, select {
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .contact-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        input, select, textarea, button {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;
         }
-
         button {
-            background-color: #25D366;
+            background-color: black;
             color: white;
             border: none;
             cursor: pointer;
-            padding: 14px;
         }
-
-        .call-now {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 14px;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 5px;
-            width: 100%;
+        .hidden {
+            display: none;
         }
-
-        /* Logo */
-        .logo {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        /* Localizzazione */
-        .location {
-            margin-top: 20px;
-        }
-
-        .location a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .or-text {
-            margin-top: 10px;
-            color: white;
-            font-size: 16px;
-        }
-
-        /* Posizionamento delle icone social */
-        .social-icons {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-        }
-
-        .social-icons a img {
-            width: 40px;
-            height: 40px;
-        }
-
-        /* Icone social più piccole su mobile */
-        @media (max-width: 767px) {
-            .social-icons a img {
-                width: 35px;
-                height: 35px;
-            }
-        }
-
     </style>
+    <script>
+        function showForm() {
+            const selectedService = document.getElementById('service').value;
+            document.querySelectorAll('.service-form').forEach(form => form.classList.add('hidden'));
+            document.getElementById(selectedService + '-form').classList.remove('hidden');
+        }
+        function sendWhatsApp() {
+            let name = document.getElementById('name').value;
+            let surname = document.getElementById('surname').value;
+            let phone = document.getElementById('phone').value;
+            let service = document.getElementById('service').value;
+            let message = `Salve, mi chiamo ${name} ${surname} (${phone}). Vorrei un preventivo per il servizio: ${service}. `;
+            
+            if (service === 'riparazione') {
+                let type = document.getElementById('repair-type').value;
+                let details = document.getElementById('repair-details').value;
+                message += `Tipo di riparazione: ${type}. Dettagli: ${details}`;
+            } else if (service === 'abito-su-misura') {
+                let spalle = document.getElementById('spalle').value;
+                let torace = document.getElementById('torace').value;
+                let vita = document.getElementById('vita').value;
+                let fianchi = document.getElementById('fianchi').value;
+                let lunghezza = document.getElementById('lunghezza').value;
+                message += `Misure: Spalle ${spalle} cm, Torace ${torace} cm, Vita ${vita} cm, Fianchi ${fianchi} cm, Lunghezza ${lunghezza} cm.`;
+            }
+            
+            let whatsappUrl = `https://wa.me/393408936244?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/logo.png" alt="Logo Gommista" class="logo">
-        <h2>Richiedi un Preventivo</h2>
-        <form id="preventivoForm">
-            <input type="text" id="nome" placeholder="Il tuo nome" required>
-            <input type="tel" id="telefono" placeholder="Numero di telefono" required>
-            <input type="text" id="modello" placeholder="Modello dell'auto" required>
-            <input type="text" id="misura" placeholder="Misura delle gomme (es. 205/55 R16)" required>
-            <select id="servizio">
-                <option value="Cambio gomme">Cambio gomme</option>
-                <option value="Equilibratura">Equilibratura</option>
-                <option value="Convergenza">Convergenza</option>
-                <option value="Riparazione pneumatico">Riparazione pneumatico</option>
-            </select>
-            <button type="button" onclick="inviaWhatsApp()">Richiedi su WhatsApp</button>
-            
-            <div class="or-text">oppure</div>
+        <h1>Anna Ruvolo Fashion Design</h1>
+        <p>Creazioni sartoriali su misura per ogni occasione</p>
+        
+        <div class="contact-form">
+            <h2>Dati Anagrafici</h2>
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="surname" placeholder="Cognome" required>
+            <input type="tel" id="phone" placeholder="Numero di telefono" required>
+        </div>
 
-            <button class="call-now" onclick="window.location.href='tel:+393401952411'">Chiama Adesso</button>
-        </form>
-        <div class="location">
-            <h3>Dove Siamo</h3>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Enrico+Fermi,+98040+Torregrotta+ME" target="_blank">Ottieni Indicazioni</a>
+        <div class="contact-form">
+            <h2>Seleziona il Servizio</h2>
+            <select id="service" onchange="showForm()">
+                <option value="" disabled selected>Seleziona un servizio</option>
+                <option value="riparazione">Riparazione sartoriale</option>
+                <option value="abito-su-misura">Abito su misura</option>
+            </select>
+        </div>
+        
+        <div id="riparazione-form" class="contact-form service-form hidden">
+            <h2>Dettagli Riparazione</h2>
+            <select id="repair-type">
+                <option value="buca">Riparazione buco nei pantaloni</option>
+                <option value="accorciare">Accorciare un abito</option>
+                <option value="modifica">Altre modifiche</option>
+            </select>
+            <textarea id="repair-details" placeholder="Descrivi la riparazione richiesta" rows="4"></textarea>
+            <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
+        </div>
+        
+        <div id="abito-su-misura-form" class="contact-form service-form hidden">
+            <h2>Inserisci le tue Misure</h2>
+            <input type="number" id="spalle" placeholder="Spalle (cm)" required>
+            <input type="number" id="torace" placeholder="Torace (cm)" required>
+            <input type="number" id="vita" placeholder="Vita (cm)" required>
+            <input type="number" id="fianchi" placeholder="Fianchi (cm)" required>
+            <input type="number" id="lunghezza" placeholder="Lunghezza totale (cm)" required>
+            <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
         </div>
     </div>
-
-    <!-- Icone social fisse in basso al centro -->
-    <div class="social-icons">
-        <a href="https://wa.me/393491076332" class="whatsapp-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
-        <a href="https://www.instagram.com/catanzarogomme2023/" class="instagram-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
-        <a href="https://www.facebook.com/share/18b47BLgUg/" class="facebook-icon" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-        </a>
-    </div>
-
-    <script>
-        function inviaWhatsApp() {
-            var nome = document.getElementById("nome").value;
-            var telefono = document.getElementById("telefono").value;
-            var modello = document.getElementById("modello").value;
-            var misura = document.getElementById("misura").value;
-            var servizio = document.getElementById("servizio").value;
-
-            var messaggio = "Ciao, sono " + nome + ", il mio numero è " + telefono + ". Vorrei un preventivo per " + servizio + " su una " + modello + " con le gomme " + misura + ".";
-            var url = "https://wa.me/393491076332?text=" + encodeURIComponent(messaggio);
-
-            window.open(url, "_blank");
-        }
-    </script>
 </body>
 </html>
