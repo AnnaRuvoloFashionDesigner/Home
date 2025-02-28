@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>Catanzaro Gomme</title>
     <style>
-        /* Impostazioni globali per tutti i dispositivi */
+        /* Impostazioni generali per il corpo */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -16,11 +16,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            overflow: hidden; /* Disabilita qualsiasi scroll */
+            overflow: hidden;
             background-color: #ff0000; /* Sfondo rosso di base per desktop */
         }
 
-        /* Sfondo immagine per mobile */
+        /* Sfondo su mobile */
         @media (max-width: 767px) {
             body {
                 background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
@@ -29,7 +29,7 @@
             }
         }
 
-        /* Sfondo immagine e bordi rossi per desktop */
+        /* Sfondo su desktop */
         @media (min-width: 768px) {
             body {
                 background: #ff0000; /* Sfondo rosso */
@@ -52,8 +52,9 @@
             }
         }
 
+        /* Container del modulo di preventivo */
         .container {
-            max-width: 100%; /* Assicura che la larghezza si adatti a schermo intero */
+            max-width: 100%;
             margin: auto;
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -66,6 +67,7 @@
             justify-content: center;
         }
 
+        /* Form e bottoni */
         input, button, select {
             width: 100%;
             padding: 12px;
@@ -94,12 +96,14 @@
             width: 100%;
         }
 
+        /* Logo */
         .logo {
             max-width: 100%;
             height: auto;
             margin-bottom: 20px;
         }
 
+        /* Localizzazione */
         .location {
             margin-top: 20px;
         }
@@ -120,6 +124,7 @@
             font-size: 16px;
         }
 
+        /* Posizionamento delle icone social */
         .social-icons {
             position: fixed;
             bottom: 10px;
@@ -135,7 +140,7 @@
             height: 40px;
         }
 
-        /* Ridurre la dimensione delle icone social su smartphone */
+        /* Icone social più piccole su mobile */
         @media (max-width: 767px) {
             .social-icons a img {
                 width: 35px;
