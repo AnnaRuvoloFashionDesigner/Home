@@ -13,38 +13,46 @@
             padding: 0;
             text-align: center;
         }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
         }
+
         h1 {
             font-size: 2em;
             font-weight: bold;
         }
+
         .contact-form {
             margin-top: 20px;
             padding: 20px;
             background: #f9f9f9;
             border-radius: 10px;
         }
+
         input, select, textarea, button {
-            width: calc(100% - 20px);
+            width: 100%; /* Imposta la larghezza al 100% per tutti gli elementi */
+            max-width: 500px; /* Limita la larghezza massima per evitare troppo spazio vuoto */
             padding: 10px;
             margin: 10px auto;
             border: 1px solid #ccc;
             border-radius: 5px;
             display: block;
         }
+
         button {
             background-color: black;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         .hidden {
             display: none;
         }
+
         .logo {
             max-width: 200px;
             cursor: pointer;
@@ -152,7 +160,7 @@
             <input type="tel" id="phone" placeholder="Numero di telefono" required>
             <input type="number" id="age" placeholder="Età" required>
             <input type="text" id="country" placeholder="Paese di residenza / Città" required>
-			<div style="position: relative;">
+            <div style="position: relative;">
                 <span id="date-placeholder" class="date-placeholder">Data evento</span>
                 <input type="date" id="event-date" required onfocus="toggleDatePlaceholder()" onblur="toggleDatePlaceholder()" onchange="toggleDatePlaceholder()">
             <select id="event-type" onchange="showEventForm()" required>
