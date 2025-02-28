@@ -152,7 +152,9 @@
             <input type="tel" id="phone" placeholder="Numero di telefono" required>
             <input type="number" id="age" placeholder="Età" required>
             <input type="text" id="country" placeholder="Paese di residenza / Città" required>
-            <input type="date" id="event-date" placeholder="Data evento" required>
+			<div style="position: relative;">
+                <span id="date-placeholder" class="date-placeholder">Data evento</span>
+                <input type="date" id="event-date" required onfocus="toggleDatePlaceholder()" onblur="toggleDatePlaceholder()" onchange="toggleDatePlaceholder()">
             <select id="event-type" onchange="showEventForm()" required>
                 <option value="" disabled selected>Tipologia evento</option>
                 <option value="matrimonio">Matrimonio</option>
