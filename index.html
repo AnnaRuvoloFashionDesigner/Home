@@ -29,11 +29,12 @@
             border-radius: 10px;
         }
         input, select, textarea, button {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px;
-            margin-top: 10px;
+            margin: 10px auto;
             border: 1px solid #ccc;
             border-radius: 5px;
+            display: block;
         }
         button {
             background-color: black;
@@ -43,6 +44,10 @@
         }
         .hidden {
             display: none;
+        }
+        .logo {
+            max-width: 200px;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -56,19 +61,21 @@
             let surname = document.getElementById('surname').value;
             let phone = document.getElementById('phone').value;
             let service = document.getElementById('service').value;
-            let message = `Salve, mi chiamo ${name} ${surname} (${phone}). Vorrei un preventivo per il servizio: ${service}. `;
+            let message = `Salve, mi chiamo ${name} ${surname}.\n`;
+            message += `Questo è il mio numero di telefono per chiarimenti: ${phone}.\n`;
+            message += `Vorrei un preventivo per il servizio: ${service}.\n`;
             
             if (service === 'riparazione') {
                 let type = document.getElementById('repair-type').value;
                 let details = document.getElementById('repair-details').value;
-                message += `Tipo di riparazione: ${type}. Dettagli: ${details}`;
+                message += `Tipo di riparazione: ${type}.\nDettagli: ${details}\n`;
             } else if (service === 'abito-su-misura') {
                 let spalle = document.getElementById('spalle').value;
                 let torace = document.getElementById('torace').value;
                 let vita = document.getElementById('vita').value;
                 let fianchi = document.getElementById('fianchi').value;
                 let lunghezza = document.getElementById('lunghezza').value;
-                message += `Misure: Spalle ${spalle} cm, Torace ${torace} cm, Vita ${vita} cm, Fianchi ${fianchi} cm, Lunghezza ${lunghezza} cm.`;
+                message += `Misure:\nSpalle: ${spalle} cm\nTorace: ${torace} cm\nVita: ${vita} cm\nFianchi: ${fianchi} cm\nLunghezza: ${lunghezza} cm\n`;
             }
             
             let whatsappUrl = `https://wa.me/393408936244?text=${encodeURIComponent(message)}`;
@@ -78,6 +85,7 @@
 </head>
 <body>
     <div class="container">
+        <img src="logo.png" alt="Anna Ruvolo Fashion Design" class="logo" onclick="window.location.href='index.html'">
         <h1>Anna Ruvolo Fashion Design</h1>
         <p>Creazioni sartoriali su misura per ogni occasione</p>
         
