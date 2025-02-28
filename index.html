@@ -10,8 +10,6 @@
             text-align: center;
             padding: 0;
             margin: 0;
-            background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
-            background-size: cover;
             color: white;
             height: 100vh;
             display: flex;
@@ -20,6 +18,7 @@
             overflow-x: hidden; /* Disabilita lo scroll orizzontale */
         }
 
+        /* Stili generali per tutti i dispositivi */
         .container {
             max-width: 100%; /* Assicura che la larghezza si adatti a schermo intero */
             margin: auto;
@@ -98,6 +97,22 @@
         .social-icons a img {
             width: 40px;
             height: 40px;
+        }
+
+        /* Stili per il mobile (smartphone) */
+        @media (max-width: 767px) {
+            body {
+                background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+
+        /* Stili per il desktop (oltre 767px) */
+        @media (min-width: 768px) {
+            body {
+                background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
+                background-size: contain; /* Modifica lo sfondo per non farlo sembrare troppo grande */
+            }
         }
     </style>
 </head>
