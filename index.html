@@ -15,14 +15,16 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 20px auto;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         h1 {
             font-size: 2em;
             font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .contact-form {
@@ -30,16 +32,19 @@
             padding: 20px;
             background: #f9f9f9;
             border-radius: 10px;
+            box-sizing: border-box;
         }
 
+        /* Impostazioni per garantire che tutti gli elementi siano uguali e allineati */
         input, select, textarea, button {
             width: 100%; /* Imposta la larghezza al 100% per tutti gli elementi */
-            max-width: 500px; /* Limita la larghezza massima per evitare troppo spazio vuoto */
-            padding: 10px;
-            margin: 10px auto;
+            max-width: 100%; /* Garantisce che nessun elemento esca dalla larghezza definita */
+            padding: 12px;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            display: block;
+            box-sizing: border-box;
+            font-size: 16px; /* Per uniformare la grandezza del testo */
         }
 
         button {
@@ -47,6 +52,11 @@
             color: white;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #444;
         }
 
         .hidden {
@@ -57,6 +67,10 @@
             max-width: 200px;
             cursor: pointer;
         }
+
+        textarea {
+            resize: vertical; /* Permette di ridimensionare la textarea in altezza */
+        }
     </style>
     <script>
         function showEventForm() {
@@ -65,15 +79,12 @@
             const matrimonioRoleForm = document.getElementById('matrimonio-role-form');
             const serviceForm = document.getElementById('service-form');
 
-            // Nascondi il selettore del servizio finché non viene selezionato un evento
             serviceSelection.classList.add('hidden');
             matrimonioRoleForm.classList.add('hidden');
             
             if (eventType === 'matrimonio') {
-                // Se è Matrimonio, mostra la selezione del ruolo
                 matrimonioRoleForm.classList.remove('hidden');
             } else {
-                // Altrimenti, mostra la selezione del servizio
                 serviceSelection.classList.remove('hidden');
             }
         }
@@ -83,7 +94,6 @@
             const serviceSelection = document.getElementById('service-selection');
             const serviceForm = document.getElementById('service-form');
 
-            // Una volta scelto il ruolo del matrimonio, mostra il selettore del servizio
             if (role !== "seleziona-ruolo") {
                 serviceSelection.classList.remove('hidden');
             }
@@ -95,12 +105,10 @@
             const abitoTagliaForm = document.getElementById('abito-in-taglia-form');
             const riparazioniForm = document.getElementById('riparazione-form');
             
-            // Nascondi tutti i form di servizio
             abitoSuMisuraForm.classList.add('hidden');
             abitoTagliaForm.classList.add('hidden');
             riparazioniForm.classList.add('hidden');
 
-            // Mostra il form del servizio selezionato
             if (selectedService === 'abito-su-misura') {
                 abitoSuMisuraForm.classList.remove('hidden');
             } else if (selectedService === 'abito-in-taglia') {
@@ -163,6 +171,7 @@
             <div style="position: relative;">
                 <span id="date-placeholder" class="date-placeholder">Data evento</span>
                 <input type="date" id="event-date" required onfocus="toggleDatePlaceholder()" onblur="toggleDatePlaceholder()" onchange="toggleDatePlaceholder()">
+            </div>
             <select id="event-type" onchange="showEventForm()" required>
                 <option value="" disabled selected>Tipologia evento</option>
                 <option value="matrimonio">Matrimonio</option>
