@@ -5,28 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catanzaro Gomme</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: red url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
-            background-size: cover; /* Lo sfondo prende tutto lo schermo */
+            padding: 20px;
+            background: url('https://raw.githubusercontent.com/sitiwebabbusivo/sitoV1/refs/heads/main/sfondo.PNG') no-repeat center center fixed;
+            background-size: cover;
             color: white;
+            margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            overflow: hidden; /* Evita lo scrolling */
         }
+        
+        @media (min-width: 768px) {
+            body {
+                background-size: contain;
+                background-color: red;
+            }
+        }
+        
         .container {
-            max-width: 350px;
+            max-width: 400px;
+            margin: auto;
             background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -35,80 +40,57 @@
         }
         input, button, select {
             width: 100%;
-            padding: 10px;
-            margin-top: 8px;
+            padding: 12px;
+            margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 14px;
         }
         button {
             background-color: #25D366;
             color: white;
             border: none;
             cursor: pointer;
-            padding: 12px;
+            padding: 14px;
         }
         .call-now {
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 10px;
             border-radius: 5px;
             width: 100%;
         }
         .logo {
-            max-width: 200px;
-            margin-bottom: 10px;
-        }
-        .or-text {
-            margin-top: 8px;
-            color: white;
-            font-size: 14px;
+            max-width: 350px;
+            margin-bottom: 2px;
         }
         .location {
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .location a {
             display: inline-block;
-            padding: 8px 15px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            margin-top: 10px;
         }
-        /* Icone social fisse in basso a destra */
+        .or-text {
+            margin-top: 10px;
+            color: white;
+            font-size: 16px;
+        }
         .social-icons {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-        }
-        .social-icons a {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-        }
-        .whatsapp-icon {
-            background-color: #25D366;
-        }
-        .instagram-icon {
-            background-color: #C13584;
-        }
-        .facebook-icon {
-            background-color: #1877F2;
-        }
-        .social-icons img {
-            width: 30px;
-            height: 30px;
+            gap: 10px;
         }
     </style>
 </head>
@@ -127,6 +109,7 @@
                 <option value="Convergenza">Convergenza</option>
                 <option value="Riparazione pneumatico">Riparazione pneumatico</option>
             </select>
+            <input type="file" id="fotoLibretto" accept="image/*">
             <button type="button" onclick="inviaWhatsApp()">Richiedi su WhatsApp</button>
             
             <div class="or-text">oppure</div>
