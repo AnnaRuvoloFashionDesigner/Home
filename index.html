@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anna Ruvolo Fashion Designer</title>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Playfair Display', serif; 
@@ -34,18 +35,19 @@
             background: #f9f9f9;
             border-radius: 10px;
             box-sizing: border-box;
+            border: 1px solid #e5c29b; /* Bordo color champagne */
         }
 
-        /* Impostazioni per garantire che tutti gli elementi siano uguali e allineati */
         input, select, textarea, button {
-            width: 100%; /* Imposta la larghezza al 100% per tutti gli elementi */
-            max-width: 100%; /* Garantisce che nessun elemento esca dalla larghezza definita */
+            width: 100%;
+            max-width: 100%;
             padding: 12px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 16px; /* Per uniformare la grandezza del testo */
+            font-size: 16px;
+			
         }
 
         button {
@@ -60,20 +62,20 @@
             background-color: #444;
         }
 
-        .hidden {
-            display: none;
-        }
-
         .logo {
-            max-width: 125px; /* Ridotto la dimensione del logo */
+            max-width: 125px;
             cursor: pointer;
         }
 
-        textarea {
-            resize: vertical; /* Permette di ridimensionare la textarea in altezza */
+        .inspirational-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-top: 10px;
+            color: #333;
         }
-		
-		.social-buttons {
+
+        .social-buttons {
             margin-top: 20px;
             display: flex;
             justify-content: center;
@@ -82,17 +84,38 @@
 
         .social-button {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 10px;
             background-color: black;
             color: white;
-            text-decoration: none;
+			text-decoration: none;
             font-size: 18px;
+            border: 2px solid transparent;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: border-color 0.3s ease, color 0.3s ease;
+			
+        }
+
+        .social-button img {
+            width: 30px; /* Immagini dei social ridotte */
+            height: 30px;
         }
 
         .social-button:hover {
-            background-color: #444;
+            color: #e5c29b;
+            border-color: #e5c29b;
+			
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border: 2px solid #e5c29b; /* Cambia il bordo a champagne quando il campo è attivo */
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
     <script>
@@ -183,7 +206,7 @@
 <body>
     <div class="container">
         <img src="https://raw.githubusercontent.com/AnnaRuvoloFashionDesigner/sitoV1/refs/heads/main/logov1.png" alt="Anna Ruvolo Fashion Designer" class="logo" onclick="window.location.href='index.html'">
-        <p>Creazioni sartoriali su misura per ogni occasione</p>
+        <p class="inspirational-text">L’eleganza su misura per il tuo giorno speciale</p>
         
         <div class="contact-form">
             <input type="text" id="name" placeholder="Nome" required>
@@ -236,7 +259,7 @@
                 <option value="" disabled selected>Seleziona la taglia</option>
                 <option value="38">Taglia 38 (seno 80cm,vita 60cm, bacino 86cm)</option>
                 <option value="40">Taglia 40 (seno 84cm, vita 64cm, bacino 90cm)</option>
-                <option value="42">Taglia 42 (seno 88cm, vita 68cm, bacino 94cm</option>
+                <option value="42">Taglia 42 (seno 88cm, vita 68cm, bacino 94cm)</option>
                 <option value="44">Taglia 44 (seno 92cm, vita 72cm, bacino 98cm)</option>
                 <option value="46">Taglia 46 (seno 96cm,vita 76cm,bacino 102cm)</option>
                 <option value="48">Taglia 48 (seno100cm,vita 80cm,bacino 106cm)</option>
@@ -259,18 +282,22 @@
                 <option value="48">Taglia 48 (seno100cm,vita 80cm,bacino 106cm)</option>
                 <option value="50">Taglia 50 (seno 104cm,vita 84cm,bacino 110cm)</option>
             </select>
-            <textarea id="description" placeholder="Descrizione dettagliata dell'abito, idea o spiegazione, particolarità fisiche ecc..." rows="4"></textarea>
             <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
         </div>
 
         <div id="riparazione-form" class="contact-form service-form hidden">
-            <h2>Riparazioni Sartoriali</h2>
-            <input type="text" id="repair-type" placeholder="Tipo di riparazione" required>
-            <textarea id="repair-details" placeholder="Descrizione dettagliata della riparazione" rows="4" required></textarea>
+            <h2>Riparazioni sartoriali</h2>
+            <select id="repair-type" required>
+                <option value="cucitura">Cucitura</option>
+                <option value="modifica">Modifica taglia</option>
+                <option value="sostituzione">Sostituzione cerniera</option>
+                <option value="altro">Altro</option>
+            </select>
+            <textarea id="repair-details" placeholder="Dettagli della riparazione" rows="4"></textarea>
             <button onclick="sendWhatsApp()">Invia Richiesta su WhatsApp</button>
         </div>
-		
-		<div class="social-buttons">
+        
+        <div class="social-buttons">
             <a href="https://www.instagram.com/annaruvolofashiondesigner/" class="social-button" target="_blank">Instagram</a>
             <a href="https://www.facebook.com/AnnaRuvoloFashionArtist/?locale=it_IT" class="social-button" target="_blank">Facebook</a>
         </div>
