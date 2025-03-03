@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I miei lavori - Anna Ruvolo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .logo {
+            max-width: 125px;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: black;
+            font-family: 'Great Vibes', cursive;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .btn-home {
+            display: inline-block;
+            background-color: black;
+            color: #e5c29b;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://raw.githubusercontent.com/AnnaRuvoloFashionDesigner/sitoV1/refs/heads/main/logov1.png" alt="Anna Ruvolo Fashion Designer" class="logo" onclick="window.location.href='index.html'">
+    <h1>I miei lavori</h1>
+    <div class="gallery">
+        <img src="img/lavoro1.jpg" alt="Lavoro 1">
+        <img src="img/lavoro2.jpg" alt="Lavoro 2">
+        <img src="img/lavoro3.jpg" alt="Lavoro 3">
+        <img src="img/lavoro4.jpg" alt="Lavoro 4">
+        <img src="img/lavoro5.jpg" alt="Lavoro 5">
+        <img src="img/lavoro6.jpg" alt="Lavoro 6">
+    </div>
+    <a href="index.html" class="btn-home">Torna alla Home</a>
+</body>
+</html>
