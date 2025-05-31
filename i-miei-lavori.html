@@ -127,26 +127,6 @@
 }
 
 		
-		<!-- carousel-->
-		
-
-.lightbox button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem;
-    background: none;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    user-select: none;
-}
-
-#prevBtn { left: 30px; }
-#nextBtn { right: 30px; }
-
-		
     </style>
 </head>
 <body>
@@ -197,12 +177,6 @@
 <div class="lightbox" id="lightbox">
     <img src="" alt="Zoom">
 </div>
-<!-- carousel-->
-<div class="lightbox" id="lightbox">
-  <button id="prevBtn">&#10094;</button>
-  <img id="lightboxImg" src="" alt="Zoom">
-  <button id="nextBtn">&#10095;</button>
-</div>
 
 
 <script>
@@ -242,55 +216,6 @@
 </script>
 
 </script>
-
-<!-- carousel-->
-	<script>
-const images = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-let currentIndex = 0;
-
-function showImage(index) {
-    if (index < 0) index = images.length - 1;
-    if (index >= images.length) index = 0;
-    currentIndex = index;
-    lightboxImg.src = images[currentIndex].src;
-}
-
-images.forEach((img, i) => {
-    img.addEventListener("click", () => {
-        showImage(i);
-        lightbox.classList.add("active");
-    });
-});
-
-lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox || e.target === lightboxImg) {
-        lightbox.classList.remove("active");
-    }
-});
-
-prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showImage(currentIndex - 1);
-});
-
-nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showImage(currentIndex + 1);
-});
-
-document.addEventListener("keydown", (e) => {
-    if (!lightbox.classList.contains("active")) return;
-    if (e.key === "ArrowRight") showImage(currentIndex + 1);
-    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
-    if (e.key === "Escape") lightbox.classList.remove("active");
-});
-</script>
-
 	
 </body>
 </html>
