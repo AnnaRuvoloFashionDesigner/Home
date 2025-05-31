@@ -241,6 +241,32 @@
             window.open(whatsappUrl, '_blank');
         }
     </script>
+	
+	<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Traccia click su link email
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        fbq('track', 'Contact', {
+          contactType: 'email',
+          contactValue: link.getAttribute('href')
+        });
+      });
+    });
+
+    // Traccia click su link telefono
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        fbq('track', 'Contact', {
+          contactType: 'phone',
+          contactValue: link.getAttribute('href')
+        });
+      });
+    });
+  });
+</script>
+
+	
 </head>
 <body>
     <div class="container">
